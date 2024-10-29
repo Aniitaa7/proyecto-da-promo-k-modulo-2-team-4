@@ -37,7 +37,3 @@ CREATE TABLE `info_artistas_last_fm` (
     biografia TEXT,
     listeners INT DEFAULT 0,
     playcount INT DEFAULT 0,
-    artistas_similares TEXT,
-    PRIMARY KEY(artista_id),
-    FOREIGN KEY (artista_id) REFERENCES artistas_spotify(id) ON DELETE CASCADE
-);
