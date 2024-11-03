@@ -55,4 +55,5 @@ SELECT * FROM info_artistas_last_fm;
 ALTER TABLE info_artistas_last_fm
 	MODIFY COLUMN listeners INT;
     
-    
+ALTER TABLE info_artistas_last_fm
+	MODIFY COLUMN playcount BIGINT;
