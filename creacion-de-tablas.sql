@@ -21,6 +21,7 @@ CREATE TABLE `canciones_spotify` (
 
 SELECT * FROM canciones_spotify;
 
+
 CREATE TABLE `info_artistas_musicbrainz` (
 	id_musicbrainz INT AUTO_INCREMENT PRIMARY KEY,
     artista_nombre VARCHAR(100) NOT NULL,
@@ -36,6 +37,10 @@ CREATE TABLE `info_artistas_musicbrainz` (
 
 SELECT * FROM info_artistas_musicbrainz;
 
+
+
+
+
 CREATE TABLE `info_artistas_last_fm` (
 	id_lastfm INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     artista_nombre VARCHAR(100) NOT NULL,
@@ -45,5 +50,9 @@ CREATE TABLE `info_artistas_last_fm` (
     artistas_similares TEXT);
     -- PRIMARY KEY(artista_nombre),  -- Usar nombre_artista como la clave primaria
     -- CONSTRAINT fk_id_lastfm FOREIGN KEY (id_lastfm) REFERENCES artistas_spotify(id) ON DELETE CASCADE ON UPDTE CASCADE 
-    
 SELECT * FROM info_artistas_last_fm;
+
+ALTER TABLE info_artistas_last_fm
+	MODIFY COLUMN listeners INT;
+    
+    
