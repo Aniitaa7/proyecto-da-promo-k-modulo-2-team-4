@@ -1,6 +1,6 @@
 # Proyecto MusicStream: Análisis de Popularidad de Canciones en la Era Digital
 
-**MusicStream** es un proyecto donde nos proponemos explorar y entender las tendencias musicales de la era digital utilizando para ello conceptos de análisis de datos.Para ello utilizaremos datos extraídos de diversas plataformas (Spotify, MusicBrainz, last.fm) mediante el uso de sus APIs.
+**MusicStream** es un proyecto donde nos proponemos explorar y entender las tendencias musicales de la era digital utilizando para ello conceptos de análisis de datos. Usaremos datos extraídos de diversas plataformas (Spotify, MusicBrainz, last.fm) mediante el uso de sus APIs.
 En un panorama musical en constante cambio, nuestro objetivo es analizar la popularidad de canciones y álbumes desde el año 2000 hasta la actualidad. A través de este análisis, buscamos ofrecer una mejor experiencia a nuestros usuarios y descubrir qué hace que una canción o un álbum se convierta en un éxito. Para ello, nos hemos centrado en las canciones de 4 géneros musicales (pop, rock, rap e indie) de los años 2021 y 2022.
 Este proyecto se ha realizado en diferentes fases.
 
@@ -13,7 +13,7 @@ En esta fase, se extraen datos relevantes de varias fuentes:
 
 ## Fase 2: Organización y Almacenamiento de Datos
 
-Una vez recopilada la información, y después de definir una estructura adecuada para que sea fácil consultarla y analizarla con posterioridad, se organiza y almacena en una base de datos que sigue el siguiente esquema:
+Una vez recopilada la información, y después de definir una estructura adecuada para que sea fácil consultarla y analizarla con posterioridad, se organiza y almacena en una base de datos que sigue el siguiente esquema:git
 
 ![Esquema de la base de datos](esquema.jpeg)
 
