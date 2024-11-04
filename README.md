@@ -13,7 +13,9 @@ En esta fase, se extraen datos relevantes de varias fuentes:
 
 ## Fase 2: Organización y Almacenamiento de Datos
 
-Una vez recopilada la información, y después de definir una estructura adecuada para que sea fácil consultarla y analizarla con posterioridad, se organiza y almacena en una base de datos.
+Una vez recopilada la información, y después de definir una estructura adecuada para que sea fácil consultarla y analizarla con posterioridad, se organiza y almacena en una base de datos que sigue el siguiente esquema:
+
+![Esquema de la base de datos](esquema.jpeg)
 
 ## Fase 3: Análisis y Consultas de Datos
 
