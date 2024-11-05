@@ -6,7 +6,7 @@
 		        artistas_spotify => (id_artista/id_artista_lfm) => info_artistas_lastfm ## listeners ## */
 
 
-SELECT csp.genre AS genero, AVG(lfm.listeners) AS media_reproducciones
+SELECT csp.genre AS genero, AVG(lfm.playcount) AS media_reproducciones
 	FROM canciones_spotify AS csp
     INNER JOIN info_artistas_lastfm AS lfm
 		ON csp.id_artista_sp = lfm.id_artista_lfm
@@ -18,7 +18,7 @@ SELECT csp.genre AS genero, AVG(lfm.listeners) AS media_reproducciones
 
 /*  Relaciones: 	canciones_spotify ## género ## => (id_artista_sp/id_artista) => artistas_spotify)## artista ## */
 
-SELECT csp.genre AS genero, COUNT(a.artista) AS num_artistas
+SELECT csp.genre AS genero, COUNT(DISTINCT a.artista) AS num_artistas
 	FROM canciones_spotify AS csp
     INNER JOIN artistas_spotify AS a
 		ON csp.id_artista_sp = a.id_artista
@@ -26,7 +26,7 @@ SELECT csp.genre AS genero, COUNT(a.artista) AS num_artistas
         
 /*  2.2. ==>> Qué género tiene más artistas */
 
-SELECT csp.genre AS genero, COUNT(a.artista) AS num_artistas
+SELECT csp.genre AS genero, COUNT(DISTINCT a.artista) AS num_artistas
 	FROM canciones_spotify AS csp
     INNER JOIN artistas_spotify AS a
 		ON csp.id_artista_sp = a.id_artista
@@ -49,7 +49,8 @@ SELECT a.artista AS artista_con_mas_reproducciones
     INNER JOIN info_artistas_lastfm AS lfm
 		ON a.id_artista = lfm.id_artista_lfm
 	ORDER BY lfm.listeners DESC
-    LIMIT 1;
+    -- LIMIT 1
+    ;
 
 /*  5.1. ==> Países y número de artistas. Ordenados de mayor a menor */
 
@@ -77,11 +78,14 @@ SELECT pais_origen AS pais, COUNT(id_artista_mb) AS num_artistas
 /*  Relaciones:	info_artistas_musicbrainz ## longevidad ## => (id_artista_mb/id_artista) => artistas_spotify)## artista ##
 				artistas_spotify => (id_artista/id_artista_sp) => canciones_spotify # num_canciones #	*/	
 				
-SELECT id_artista_mb AS Artista, 
+SELECT C.artista AS Artista,
        DATEDIFF(COALESCE(fin_actividad, CURRENT_DATE()), inicio_actividad) AS TiempoActivoDias,
-       COUNT(canciones_spotify.id_artista_sp) AS NumeroCanciones
-FROM info_artistas_musicbrainz
-INNER JOIN canciones_spotify ON info_artistas_musicbrainz.id_artista_mb = canciones_spotify.id_artista_sp
+       COUNT(B.id_artista_sp) AS NumeroCanciones
+FROM info_artistas_musicbrainz as A
+INNER JOIN canciones_spotify as B
+	ON A.id_artista_mb = B.id_artista_sp
+INNER JOIN artistas_spotify as C
+	ON C.id_artista = B.id_artista_sp
 GROUP BY Artista, TiempoActivoDias
 ORDER BY TiempoActivoDias DESC
 LIMIT 1; 

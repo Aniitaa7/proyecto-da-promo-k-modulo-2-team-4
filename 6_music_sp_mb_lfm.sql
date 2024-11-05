@@ -38,7 +38,9 @@ CREATE TABLE canciones_spotify (
 		PRIMARY KEY (id_cancion),
         CONSTRAINT fk_canciones_spotify_artistas_spotify
 			FOREIGN KEY (id_artista)
-            REFERENCES artistas_spotify (id_artista));
+            REFERENCES artistas_spotify (id_artista)
+            ON DELETE CASCADE 
+            ON UPDATE CASCADE);
 
 -- Renombrar las columnas de los id
 ALTER TABLE canciones_spotify 
@@ -66,8 +68,10 @@ CREATE TABLE info_artistas_musicbrainz (
     fecha_fallecimiento VARCHAR(100),
 		PRIMARY KEY (id_info_mb),
         CONSTRAINT fk_info_artistas_musicbranin_artistas_spotity
-			FOREIGN KEY (id_artista)
-            REFERENCES artistas_spotify (id_artista));
+			FOREIGN KEY (id_artista) 
+            REFERENCES artistas_spotify (id_artista)
+            ON DELETE CASCADE 
+            ON UPDATE CASCADE);
 
 -- Renombrar las columnas de los id
 ALTER TABLE info_artistas_musicbrainz 
@@ -92,7 +96,9 @@ CREATE TABLE info_artistas_lastfm (
 		PRIMARY KEY (id_info_lfm),
         CONSTRAINT fk_info_artistas_lastfm_artistas_spotify
 			FOREIGN KEY (id_artista)
-			REFERENCES artistas_spotify (id_artista));
+			REFERENCES artistas_spotify (id_artista)
+            ON DELETE CASCADE 
+            ON UPDATE CASCADE);
             
 -- Renombrar las columnas de los id
 ALTER TABLE info_artistas_lastfm 
